@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-//$("#search").click(function () {
-
-//alert($("#keyword").val());
+    /* $( '#search' ).on( 'submit', function(e) {
+        e.preventDefault();
+        var keyword = $(this).find('input[name=keyword]').val();
         var endpoint = 'https://api.flickr.com/services/rest/?&method=flickr.photos.search&format=json&nojsoncallback=1';
-        var tags = "horse";
+        var tags = keyword;
         var api_key = "57f694132e4714c29a64c9af890b124e"
         var per_page = 2;
         var url = endpoint + "&api_key=" + api_key + "&tags=" + tags + "&per_page=" + per_page;
@@ -23,14 +23,29 @@ $(document).ready(function () {
                 var id = response.photos.photo[0].id;
                 var secret = response.photos.photo[0].secret;
             //  https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-                $(".pic").append('<img src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/>');
+               // $(".pic").append('<img src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/>');
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: "post",
+                    url: "search",
+                    data: {"farmId" : farmId},
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             },
             error: function (error) {
-                $("#h3").append(error);
+               console.log(error);
             }
-        });
-    
-   // });
+       });
+       $(this).find('input[name=keyword]').val("");
+    }); */
 
    
 });
