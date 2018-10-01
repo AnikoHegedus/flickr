@@ -1,7 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
-.card {
+.form-group {
   margin: 5px;
+}
+
+.card-img-bottom {
+  height: 270px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
 }
 
 /*!
